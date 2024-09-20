@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicios</title>
+    <title>Ejercicios 1-5</title>
 </head>
 
 <body>
@@ -34,6 +34,9 @@
             break;
         case '4':
             include("./Exercices/Exercise05.php");
+            break;
+        case '5':
+            include("./Exercices/ExercisesArrays.php");
             break;
         default:
             include("./Exercices/Exercise01.php");
