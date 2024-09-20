@@ -11,8 +11,7 @@
     <nav>
         <form action="" method="post">
             <?php
-            $archivos = scandir("./Exercices");
-            for ($i = 0; $i < count($archivos) - 2; $i++) {
+            for ($i = 0; $i < 5 ; $i++) {
                 echo ("<button name='exercices' value='$i'>Exercise0" . ($i + 1) . "</button>");
             }
             ?>
@@ -21,25 +20,25 @@
     <?php
     switch (isset($_POST['exercices']) ? $_POST['exercices'] : " ") {
         case '0':
-            include("./Exercices/Exercise01.php");
+            include("./Ex1-5/Exercices/Exercise01.php");
             break;
         case '1':
-            include("./Exercices/Exercise02.php");
+            include("./Ex1-5/Exercices/Exercise02.php");
             break;
         case '2':
-            include("./Exercices/Exercise03.php");
+            include("./Ex1-5/Exercices/Exercise03.php");
             break;
         case '3':
-            include("./Exercices/Exercise04.php");
+            include("./Ex1-5/Exercices/Exercise04.php");
             break;
         case '4':
-            include("./Exercices/Exercise05.php");
+            include("./Ex1-5/Exercices/Exercise05.php");
             break;
         case '5':
-            include("./Exercices/ExercisesArrays.php");
+            include("./Ex1-5/Exercices/ExercisesArrays.php");
             break;
         default:
-            include("./Exercices/Exercise01.php");
+            include("./Ex1-5/Exercices/Exercise01.php");
             break;
     }
     ?>
