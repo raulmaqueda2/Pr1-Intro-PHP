@@ -11,38 +11,48 @@ $bebidas = [
 if (isset($_COOKIE['bebidas'])) {
     $bebidas = json_decode($_COOKIE['bebidas'], true);
 }
-if (isset($_POST['sel'])) {
-    if (isset($_POST['cantidad'])) {
-        if (isset($_POST['add'])) {
-            if ($_POST['sel'] === "leche") {
-                $bebidas['leche'] += $_POST['cantidad'];
-            } else {
-                $bebidas['refresco'] += $_POST['cantidad'];
-            }
-        }
-        if (isset($_POST['del'])) {
-            if ($_POST['sel'] === "leche") {
-                if ($_POST['cantidad'] <= $bebidas['leche']) {
-                    $bebidas['leche'] -= $_POST['cantidad'];
+try {
+    //code...
+
+    if (isset($_POST['sel'])) {
+        if (isset($_POST['cantidad'])) {
+            if (isset($_POST['add'])) {
+                if ($_POST['sel'] === "leche") {
+                    $bebidas['leche'] += $_POST['cantidad'];
                 } else {
-                    echo " Error";
-                }
-            } else {
-                if ($_POST['cantidad'] <= $bebidas['leche']) {
-                    $bebidas['refresco'] -= $_POST['cantidad'];
-                } else {
-                    echo " Error";
+                    $bebidas['refresco'] += $_POST['cantidad'];
                 }
             }
+            if (isset($_POST['del'])) {
+                if ($_POST['sel'] === "leche") {
+                    if ($_POST['cantidad'] <= $bebidas['leche']) {
+                        $bebidas['leche'] -= $_POST['cantidad'];
+                    } else {
+                        echo " Error";
+                        throw new ErrorException("hola");
+                    }
+                } else {
+                    if ($_POST['cantidad'] <= $bebidas['leche']) {
+                        $bebidas['refresco'] -= $_POST['cantidad'];
+                    } else {
+                        echo " Error";
+                        throw new ErrorException("hola");
+                    }
+                }
+            }
+            if (isset($_POST['rest'])) {
+                $bebidas = [
+                    "leche" => 0,
+                    "refresco" => 0,
+                ];
+            }
+            if ($bebidas === json_decode($_COOKIE['bebidas'])) {
+            } else {
+                setcookie("bebidas", json_encode($bebidas));
+            }
         }
-        if (isset($_POST['rest'])) {
-            $bebidas = [
-                "leche" => 0,
-                "refresco" => 0,
-            ];
-        }
-        setcookie("bebidas", json_encode($bebidas));
     }
+} catch (\Throwable $th) {
 }
 if (!(isset($_COOKIE['bebidas']))) {
     setcookie('bebidas', json_encode($bebidas));
