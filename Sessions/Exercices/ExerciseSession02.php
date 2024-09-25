@@ -7,8 +7,23 @@ if (!(isset($_COOKIE['array']))) {
     $array = json_decode($_COOKIE['array']);
 }
 
+if (isset($_POST['mod'])) {
+
+    $array[$_POST["sel"]] = $_POST['val'];
+    unset($_COOKIE);
+    setcookie('array', json_encode($array));
 
 
+}
+if (isset($_POST['res'])) {
+
+    $array[$_POST["sel"]] = $_POST['val'];
+    unset($_COOKIE);
+    $array = [rand(10, 30), rand(10, 30), rand(10, 30),];
+    setcookie('array', json_encode($array));
+
+
+}
 ?>
 <form action="" method="post">
     <p>Selecionar:
@@ -34,12 +49,7 @@ if (!(isset($_COOKIE['array']))) {
     }; ?></p>
 
 
-<?php if (isset($_POST['mod'])) {
 
-    echo $_POST["sel"];
-    
-
-}?>
 
 
 <?php if (isset($_POST['med'])) {
