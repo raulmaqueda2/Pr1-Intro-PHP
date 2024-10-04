@@ -69,7 +69,7 @@ function restartItems()
 }
 function calAll(){
     $a = 0;
-    for ($i=1; $i < count($GLOBALS['lista']); $i++) { 
+    for ($i=0; $i < count($GLOBALS['lista']); $i++) { 
         $a += $GLOBALS['lista'][$i][1]*$GLOBALS['lista'][$i][2];
     }
     echo $a;

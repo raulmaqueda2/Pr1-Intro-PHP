@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './Extra/list.php';
+include './list.php';
 
 ?>
 <!DOCTYPE html>
